@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Q1-Ag-APh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="x75-tI-W1v">
+            <objects>
+                <navigationController id="4Q1-Ag-APh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M1E-XW-eBx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Dcn-Dw-n8a" kind="relationship" relationship="rootViewController" id="Fkc-mp-zK4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gO-Dy-uHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-889" y="94"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lcR-g7-XrB">
+            <objects>
+                <viewController id="Dcn-Dw-n8a" customClass="ViewController" customModule="Custom_Control" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="idV-VI-SQg"/>
+                        <viewControllerLayoutGuide type="bottom" id="SuI-gb-CrO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VJt-RB-ZDm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dE9-BI-JPQ" customClass="CustomControl" customModule="Custom_Control" customModuleProvider="target">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <action selector="updateRating:" destination="Dcn-Dw-n8a" eventType="valueChanged" id="Rgx-1I-teD"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dE9-BI-JPQ" firstAttribute="centerX" secondItem="VJt-RB-ZDm" secondAttribute="centerX" id="VNG-Ad-hEH"/>
+                            <constraint firstItem="dE9-BI-JPQ" firstAttribute="centerY" secondItem="VJt-RB-ZDm" secondAttribute="centerY" id="tMK-kw-OQJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iTc-Y3-Yyi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18f-Fe-mHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-57" y="93"/>
+        </scene>
+    </scenes>
+</document>
