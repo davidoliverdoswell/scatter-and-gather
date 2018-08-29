@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var shouldScramble = Bool()
+    var shouldScramble = false
     
     let logo: UIImageView = {
         let image = UIImageView()
@@ -75,16 +75,7 @@ class ViewController: UIViewController {
     
     @IBAction func toggle(_ sender: Any) {
         
-        let toggling = Bool()
-        
-        switch toggling {
-        case shouldScramble:
-            toggleOn()
-        case !shouldScramble:
-            toggleOff()
-        default:
-            break
-        }
+        _ = shouldScramble ? toggleOff() : toggleOn()
     }
     
     func toggleOn() {
@@ -133,11 +124,23 @@ class ViewController: UIViewController {
             print("Bad sign")
             self.logo.transform = CGAffineTransform(scaleX: -20, y: -20)
             self.firstLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.firstLetter.textColor = .black
+            
             self.secondLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.secondLetter.textColor = .black
+            
             self.thirdLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.thirdLetter.textColor = .black
+            
             self.fourthLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.fourthLetter.textColor = .black
+            
             self.fifthLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.fifthLetter.textColor = .black
+            
             self.sixthLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.sixthLetter.textColor = .black
+            
             CATransaction.commit()
         }
     }
