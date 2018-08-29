@@ -74,6 +74,20 @@ class ViewController: UIViewController {
     }()
     
     @IBAction func toggle(_ sender: Any) {
+        
+        let toggling = Bool()
+        
+        switch toggling {
+        case shouldScramble:
+            toggleOn()
+        case !shouldScramble:
+            toggleOff()
+        default:
+            break
+        }
+    }
+    
+    func toggleOn() {
         CATransaction.begin()
         
         let animation = CAKeyframeAnimation(keyPath: "backgroundColor")
@@ -82,24 +96,56 @@ class ViewController: UIViewController {
         
         logo.layer.add(animation, forKey: "backgroundColorAnimation")
         
-        CATransaction.setCompletionBlock {
+        UIView.animate(withDuration: 2.0) {
+            self.logo.transform = CGAffineTransform(scaleX: -20, y: -20)
             self.firstLetter.transform = CGAffineTransform(rotationAngle: 30.0)
-            self.secondLetter.transform = CGAffineTransform(rotationAngle: -30.0)
-            self.thirdLetter.transform = CGAffineTransform(rotationAngle: 20.0)
-            self.fourthLetter.transform = CGAffineTransform(rotationAngle: -10.0)
-            self.fifthLetter.transform = CGAffineTransform(rotationAngle: 80.0)
-            self.sixthLetter.transform = CGAffineTransform(rotationAngle: -50.0)
+            self.firstLetter.textColor = .orange
             
+            self.secondLetter.transform = CGAffineTransform(rotationAngle: -30.0)
+            self.secondLetter.textColor = .blue
+            
+            self.thirdLetter.transform = CGAffineTransform(rotationAngle: 20.0)
+            self.thirdLetter.textColor = .red
+            
+            self.fourthLetter.transform = CGAffineTransform(rotationAngle: -10.0)
+            self.fourthLetter.textColor = .green
+            
+            self.fifthLetter.transform = CGAffineTransform(rotationAngle: 80.0)
+            self.fifthLetter.textColor = .magenta
+            
+            self.sixthLetter.transform = CGAffineTransform(rotationAngle: -50.0)
+            self.sixthLetter.textColor = .cyan
+            
+            CATransaction.commit()
         }
+    }
+    
+    func toggleOff() {
+        CATransaction.begin()
         
-        CATransaction.commit()
+        let animation = CAKeyframeAnimation(keyPath: "backgroundColor")
+        animation.values = [UIColor.red.cgColor, UIColor.purple.cgColor, UIColor.yellow.cgColor, UIColor.blue.cgColor]
+        animation.duration = 2.0
+        
+        logo.layer.add(animation, forKey: "backgroundColorAnimation")
+
+        UIView.animate(withDuration: 2.0) {
+            print("Bad sign")
+            self.logo.transform = CGAffineTransform(scaleX: -20, y: -20)
+            self.firstLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.secondLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.thirdLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.fourthLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.fifthLetter.transform = CGAffineTransform(rotationAngle: 0)
+            self.sixthLetter.transform = CGAffineTransform(rotationAngle: 0)
+            CATransaction.commit()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpViews()
-       
     }
     
     func setUpViews() {
