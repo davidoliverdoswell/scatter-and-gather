@@ -75,7 +75,13 @@ class ViewController: UIViewController {
     
     @IBAction func toggle(_ sender: Any) {
         
-        _ = shouldScramble ? toggleOff() : toggleOn()
+        shouldScramble = !shouldScramble
+        
+        if shouldScramble {
+            toggleOn()
+        } else {
+            toggleOff()
+        }
     }
     
     func toggleOn() {
@@ -115,14 +121,14 @@ class ViewController: UIViewController {
         CATransaction.begin()
         
         let animation = CAKeyframeAnimation(keyPath: "backgroundColor")
-        animation.values = [UIColor.red.cgColor, UIColor.purple.cgColor, UIColor.yellow.cgColor, UIColor.blue.cgColor]
+        animation.values = [UIColor.white.cgColor]
         animation.duration = 2.0
         
         logo.layer.add(animation, forKey: "backgroundColorAnimation")
 
         UIView.animate(withDuration: 2.0) {
-            print("Bad sign")
-            self.logo.transform = CGAffineTransform(scaleX: -20, y: -20)
+            self.logo.transform = CGAffineTransform(scaleX: 1, y: 1)
+
             self.firstLetter.transform = CGAffineTransform(rotationAngle: 0)
             self.firstLetter.textColor = .black
             
