@@ -9,6 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBAction func animate(_ sender: Any) {
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5) {
+            self.greenWidthConstraint.constant = 300
+            self.greenCenterYConstraint.constant = -200
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    var greenWidthConstraint: NSLayoutConstraint!
+    var greenCenterYConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,35 +30,20 @@ class ViewController: UIViewController {
         greenSquare.backgroundColor = .green
         view.addSubview(greenSquare)
         
-        let purpleSquare = UIView()
-        purpleSquare.translatesAutoresizingMaskIntoConstraints = false
-        purpleSquare.backgroundColor = .purple
-        view.addSubview(purpleSquare)
-        
         let widthConstraint = NSLayoutConstraint(item: greenSquare, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200)
+        
+        greenWidthConstraint = widthConstraint
         
         let heightConstraint = NSLayoutConstraint(item: greenSquare, attribute: .height, relatedBy: .equal, toItem: greenSquare, attribute: .width, multiplier: 1.0, constant: 0)
         
         let centerY = NSLayoutConstraint(item: greenSquare, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0)
         
+        greenCenterYConstraint = centerY
+        
         let centerX = NSLayoutConstraint(item: greenSquare, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
-        
-        //
-        
-        let pWidthConstraint = NSLayoutConstraint(item: purpleSquare, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200)
-        
-        let pHeightConstraint = NSLayoutConstraint(item: purpleSquare, attribute: .height, relatedBy: .equal, toItem: greenSquare, attribute: .width, multiplier: 1.0, constant: 0)
-        
-        let pBottom = NSLayoutConstraint(item: purpleSquare, attribute: .bottom, relatedBy: .equal, toItem: greenSquare, attribute: .bottom, multiplier: 1.0, constant: 210)
-        
-        let pCenterX = NSLayoutConstraint(item: purpleSquare, attribute: .centerX, relatedBy: .equal, toItem: greenSquare, attribute: .centerX, multiplier: 1.0, constant: 0)
         
         
         NSLayoutConstraint.activate([heightConstraint, widthConstraint, centerX, centerY])
-        
-        NSLayoutConstraint.activate([pHeightConstraint, pWidthConstraint, pCenterX, pBottom])
-        
-        
     }
 
 }
